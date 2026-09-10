@@ -13,7 +13,7 @@ export class UserService {
 
   private user: User = {
     id: 1,
-    is_auth: false,
+    admin: false,
   }
 
   getData() {

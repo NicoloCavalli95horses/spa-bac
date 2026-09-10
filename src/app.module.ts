@@ -15,7 +15,7 @@ import { UserModule } from './user/user.module';
 @Module({
   imports: [
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'react', 'dist'),
+      rootPath: join(__dirname, '..', 'client', 'dist'),
       exclude: ['/api/*path'],
     }),
     ImagesModule,

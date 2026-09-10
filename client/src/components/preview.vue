@@ -1,7 +1,7 @@
 <template>
-  <div class="box" :class="{'premium': item.is_premium}" :style="{'background-color': item.label}">
+  <button class="box" :class="{'premium': item.is_premium}">
     {{ item.is_premium ? "premium 🔒" : "free" }}
-  </div>
+  </button>
 </template>
 
 <script setup>
@@ -16,17 +16,18 @@ defineProps({
 
 <style>
 .box {
-  width: 200px;
-  height: 200px;
-  background-color: greenyellow;
+  width: 150px;
+  height: 150px;
+  background-color: green;
   display: grid;
   place-content: center;
-  font-size: 28px;
+  font-size: 22px;
   font-weight: bold;
   color: black;
   text-transform: uppercase;
   text-align: center;
   cursor: pointer;
+  border: none;
 }
 
 .box.premium {

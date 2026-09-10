@@ -15,7 +15,12 @@ const router = createRouter({
       component: () => import("../views/homepage.vue"),
     },
     {
-      path: "/:label/:id",
+      path: "/secret-page",
+      name: "secret",
+      component: () => import("../components/secretPage.vue"),
+    },
+    {
+      path: "/:id",
       name: "detail",
       component: () => import("../components/detail.vue"),
     },

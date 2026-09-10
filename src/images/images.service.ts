@@ -13,9 +13,7 @@ export class ImagesService {
 
   private images: Image[] = [
     { id: crypto.randomUUID(), label: "blue", is_premium: false },
-    { id: crypto.randomUUID(), label: "red", is_premium: true },
-    { id: crypto.randomUUID(), label: "yellow", is_premium: false },
-    { id: crypto.randomUUID(), label: "purple", is_premium: true },
+    { id: crypto.randomUUID(), label: "red", is_premium: true }
   ];
 
 
