@@ -7,6 +7,7 @@ import { join } from 'path';
 import { ImagesModule } from './images/images.module';
 import { FrontendFallbackMiddleware } from './frontend-fallback.middleware';
 import { UserModule } from './user/user.module';
+import { ExecuteModule } from './execute/execute.module';
 
 
 //================
@@ -20,6 +21,7 @@ import { UserModule } from './user/user.module';
     }),
     ImagesModule,
     UserModule,
+    ExecuteModule,
   ],
 })
 

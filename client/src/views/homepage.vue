@@ -8,8 +8,7 @@
   <h2>Client-side bypassable access control</h2>
   <button @click="onAdminPage">Go to admin page</button>
   <h2>HTTP parameter tampering</h2>
-  <p>You have {{ user.credits }} credits. You need at least 2 credit to execute this call</p>
-  <button @click="onCreditCall">Execute call</button>
+  <button :class="user.credits > 1 ? 'allowed' : 'forbidden'" @click="onCreditCall">Execute call (2 credits)</button>
 
 
 </template>
@@ -35,7 +34,6 @@ import Banner from '../components/banner.vue';
 // Consts
 // ====================
 const route = useRouter();
-
 const items = ref({});
 const user = ref({});
 const show_banner = ref(false);
@@ -97,6 +95,17 @@ button {
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
+}
+
+button.allowed {
+  background: #2a2a2a;
+  color: #e5e5e5;
+  border: 1px solid #444;
+}
+button.forbidden {
+  background: #252525;
+  border-color: #8a6d3b;
+  color: #e6d3a3;
 }
 
 </style>
