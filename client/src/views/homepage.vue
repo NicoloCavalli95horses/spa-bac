@@ -43,8 +43,8 @@ const show_banner = ref(false);
 // Functions
 // ====================
 function onAdminPage() {
-  if (user.value.is_admin) {
-    route.push({ name: 'admin-page' });
+  if (user.value.admin) {
+    route.push({ name: 'admin' });
   } else {
     show_banner.value = true;
   }
