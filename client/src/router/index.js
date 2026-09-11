@@ -15,9 +15,9 @@ const router = createRouter({
       component: () => import("../views/homepage.vue"),
     },
     {
-      path: "/secret-page",
-      name: "secret",
-      component: () => import("../components/secretPage.vue"),
+      path: "/admin-page",
+      name: "admin",
+      component: () => import("../components/adminPage.vue"),
     },
     {
       path: "/:id",

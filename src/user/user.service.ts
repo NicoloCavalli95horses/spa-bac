@@ -14,6 +14,7 @@ export class UserService {
   private user: User = {
     id: 1,
     admin: false,
+    credits: 1,
   }
 
   getData() {

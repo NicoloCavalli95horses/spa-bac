@@ -1,6 +1,7 @@
 <template>
-  <button class="box" :class="{'premium': item.is_premium}">
-    {{ item.is_premium ? "premium 🔒" : "free" }}
+  <button class="box" :class="{ 'premium': item.is_premium }">
+    <span class="label">{{ item.is_premium ? "Premium" : "Free" }}</span>
+    <span v-if="item.is_premium" class="lock">🔒</span>
   </button>
 </template>
 
@@ -11,26 +12,35 @@
 defineProps({
   item: Object,
 });
-
 </script>
 
-<style>
+<style scoped>
 .box {
   width: 150px;
-  height: 150px;
-  background-color: green;
-  display: grid;
-  place-content: center;
-  font-size: 22px;
-  font-weight: bold;
-  color: black;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #2a2a2a;
+  color: #e5e5e5;
+  border: 1px solid #444;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
   text-transform: uppercase;
-  text-align: center;
+  letter-spacing: 0.5px;
   cursor: pointer;
-  border: none;
 }
 
+
 .box.premium {
-  background-color: orangered;
+  background: #252525;
+  border-color: #8a6d3b;
+  color: #e6d3a3;
+}
+
+.lock {
+  font-size: 14px;
 }
 </style>

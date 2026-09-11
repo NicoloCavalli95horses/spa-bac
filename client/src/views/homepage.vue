@@ -1,12 +1,16 @@
 <template>
-  <User @isAdmin="val => is_admin = val" />
+  <User :user="user" />
   <h2>Insecure Direct Object Reference (IDOR)</h2>
   <div class="main">
     <Banner v-show="show_banner" @click="show_banner = false" />
     <Preview v-for="i in items" :key="i.id" :item="i" @click="onClick(i)" />
   </div>
   <h2>Client-side bypassable access control</h2>
-  <button class="secret" @click="onSecretPage">Go to secret page</button>
+  <button @click="onAdminPage">Go to admin page</button>
+  <h2>HTTP parameter tampering</h2>
+  <p>You have {{ user.credits }} credits. You need at least 2 credit to execute this call</p>
+  <button @click="onCreditCall">Execute call</button>
+
 
 </template>
 
@@ -18,7 +22,10 @@ import {
   ref,
   onBeforeMount,
 } from 'vue';
+
+import { fetchJson } from '../utils/api.js';
 import { useRouter } from 'vue-router';
+
 import User from '../components/user.vue';
 import Preview from '../components/preview.vue';
 import Banner from '../components/banner.vue';
@@ -27,33 +34,21 @@ import Banner from '../components/banner.vue';
 // ====================
 // Consts
 // ====================
-const items = ref();
 const route = useRouter();
-const is_admin = ref(false);
+
+const items = ref({});
+const user = ref({});
 const show_banner = ref(false);
 
 
 // ====================
 // Functions
 // ====================
-function onSecretPage() {
-  if (is_admin.value) {
-    route.push({ name: 'secret-page' });
+function onAdminPage() {
+  if (user.value.is_admin) {
+    route.push({ name: 'admin-page' });
   } else {
     show_banner.value = true;
-  }
-}
-
-async function getData() {
-  const url = "http://localhost:3456/api/images";
-  try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`Response status: ${response.status}`);
-    }
-    return await response.json();
-  } catch (error) {
-    console.error(error.message);
   }
 }
 
@@ -65,11 +60,20 @@ function onClick(i) {
   }
 }
 
+function onCreditCall() {
+  fetchJson("/execute", {
+    method: "POST",
+    headers: { "Content-Type": "application/json"},
+    body: JSON.stringify(user.value)
+  });
+}
+
 // ====================
 // Life cycle
 // ====================
 onBeforeMount(async () => {
-  items.value = await getData();
+  items.value = await fetchJson('/images');
+  user.value = await fetchJson('/user');
 });
 
 </script>
@@ -83,10 +87,16 @@ onBeforeMount(async () => {
   grid-gap: 10px;
 }
 
-button.secret {
+button {
   height: 44px;
-  border: none;
+  padding: 0 18px;
+  border: 1px solid #3b82c4;
   border-radius: 8px;
+  background: #2563a6;
+  color: #f5f5f5;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
 }
+
 </style>
