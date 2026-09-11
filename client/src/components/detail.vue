@@ -1,38 +1,31 @@
 <template>
   <div class="page">
     <div class="container">
-
-      <!-- Header -->
       <div class="header">
         <div>
           <span class="category">Content detail</span>
           <h1>{{ title }}</h1>
           <p class="subtitle">Explore this exclusive content and discover more details below.</p>
         </div>
-
         <span class="badge" :class="{ premium: item?.is_premium }">
           {{ item?.is_premium ? "Premium 🔒" : "Free" }}
         </span>
       </div>
-
-      <!-- Content -->
       <div class="content-card" :class="item?.is_premium ? 'premium' : 'free'">
         <div class="content-body">
           <h2>About this content</h2>
           <p>{{ content }}</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti. Integer vitae justo nec lorem consequat tincidunt. Praesent vel neque at erat consectetur tincidunt.</p>
-
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti. Integer vitae justo nec lorem
+            consequat tincidunt. Praesent vel neque at erat consectetur tincidunt.</p>
           <div class="metadata">
             <div>
               <span>Content ID</span>
               <strong>{{ id }}</strong>
             </div>
-
             <div>
               <span>Category</span>
               <strong>Featured</strong>
             </div>
-
             <div>
               <span>Access</span>
               <strong> {{ item?.is_premium ? "Premium" : "Free" }} </strong>
@@ -67,10 +60,10 @@ onMounted(async () => {
 
 <style scoped>
 .page {
-  min-height: calc(100vh - 80px);
   padding: 50px 30px;
   background: #151515;
   color: #f5f5f5;
+  border-radius: 4px;
 }
 
 .container {
@@ -136,6 +129,7 @@ h1 {
 .content-card.free {
   background-color: rgb(53, 91, 0);
 }
+
 .content-card.premium {
   background-color: rgb(121, 80, 4);
 }
