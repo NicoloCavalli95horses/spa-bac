@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="main-user">
     <div class="user-info">
       <table>
         <tbody>
@@ -38,7 +38,7 @@ defineProps({
 </script>
 
 <style scoped>
-.main {
+.main-user {
   width: 100%;
   display: flex;
   justify-content: flex-end;

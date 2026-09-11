@@ -24,7 +24,7 @@
 
       <div class="feature-grid">
         <button class="feature-card">
-          <span class="feature-icon">⚙</span>
+          <span class="feature-icon">&#128100;</span>
           <span>
             <strong>User management</strong>
             <small>Manage users and permissions</small>

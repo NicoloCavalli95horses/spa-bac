@@ -76,7 +76,7 @@ onBeforeMount(async () => {
 
 </script>
 
-<style>
+<style scoped>
 .main {
   display: grid;
   width: 100%;
