@@ -1,5 +1,5 @@
 <template>
-  <User :user="user" />
+  <User :user="user" @click="route.push({ name: 'user' })" />
   <h2>Insecure Direct Object Reference (IDOR)</h2>
   <div class="main">
     <Banner v-show="show_banner" @click="show_banner = false" />
@@ -72,6 +72,10 @@ function onCreditCall() {
 onBeforeMount(async () => {
   items.value = await fetchJson('/images');
   user.value = await fetchJson('/user');
+
+  const data = JSON.stringify(user.value);
+
+  localStorage.setItem('user',data);
 });
 
 </script>

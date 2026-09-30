@@ -44,6 +44,7 @@ defineProps({
   justify-content: flex-end;
   align-items: center;
   gap: 16px;
+  cursor: pointer;
 }
 
 .user-info table {

@@ -15,9 +15,14 @@ const router = createRouter({
       component: () => import("../views/homepage.vue"),
     },
     {
-      path: "/admin-page",
+      path: "/admin",
       name: "admin",
       component: () => import("../components/adminPage.vue"),
+    },
+        {
+      path: "/user",
+      name: "user",
+      component: () => import("../components/userPage.vue"),
     },
     {
       path: "/:id",

@@ -1,57 +1,22 @@
 <template>
-  <div class="admin-page">
-    <Banner v-if="!data?.admin" />
-    <template v-else>
-      <header class="admin-header">
-        <div>
-          <span class="badge">ADMIN AREA</span>
-          <h1>Administration</h1>
-          <p>Manage your application and administrative features.</p>
-        </div>
-
-        <div class="admin-image">🔧</div>
-      </header>
-
-      <section class="welcome-card">
-        <div class="icon">✓</div>
-
-        <div>
-          <h3>Congratulations!</h3>
-          <p>You successfully accessed the administration area.From here you can manage privileged application features.
-          </p>
+  <div class="user-page">
+    <header class="header">
+      <div>
+        <span class="badge">User page</span>
+        <h1>User page</h1>
+        <p>This is a regular user page.</p>
+      </div>
+    </header>
+    
+    <section class="welcome-card">
+      <div>
+        <h3>Welcome, user!</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore eum doloremque voluptates magni maxime
+          rerum, distinctio commodi laboriosam voluptate vel sed est atque accusantium et? Voluptas temporibus pariatur
+          non odio. </p>
         </div>
       </section>
-
-      <section class="features">
-        <h2>Admin functionality</h2>
-
-        <div class="feature-grid">
-          <button class="feature-card">
-            <span class="feature-icon">&#128100;</span>
-            <span>
-              <strong>User management</strong>
-              <small>Manage users and permissions</small>
-            </span>
-          </button>
-
-          <button class="feature-card">
-            <span class="feature-icon">📊</span>
-            <span>
-              <strong>System statistics</strong>
-              <small>View application statistics</small>
-            </span>
-          </button>
-
-          <button class="feature-card">
-            <span class="feature-icon">🔧</span>
-            <span>
-              <strong>System configuration</strong>
-              <small>Configure application settings</small>
-            </span>
-          </button>
-        </div>
-      </section>
-    </template>
+      <a href="/">Back to homepage</a>
   </div>
 </template>
 
@@ -60,33 +25,12 @@
 // Import
 // ====================
 import { onBeforeMount, ref } from 'vue';
-import Banner from '../components/banner.vue';
 
 
 // ====================
 // Const
 // ====================
 const data = ref({});
-
-
-// ====================
-// Funcions
-// ====================
-function foo() {
-  bar()
-}
-
-function bar() {
-  oof()
-}
-
-function oof() {
-  rab()
-}
-
-function rab() {
-  console.log('called')
-}
 
 // ====================
 // Life cycle
@@ -97,11 +41,10 @@ onBeforeMount(() => {
     data.value = JSON.parse(raw);
   }
 
-  if (data.value.admin) {
-    foo()
+  if (!data.value.admin) {
+    return;
   }
-
-});
+})
 
 </script>
 
@@ -111,26 +54,26 @@ h2 {
   color: #fefefe;
 }
 
-.admin-page {
+.user-page {
   max-width: 900px;
   margin: 0 auto;
   padding: 40px 24px;
   color: #1f2937;
 }
 
-.admin-header {
+.header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 32px;
 }
 
-.admin-header h1 {
+.header h1 {
   margin: 8px 0;
   font-size: 32px;
 }
 
-.admin-header p {
+.header p {
   margin: 0;
   color: #6b7280;
 }
@@ -144,17 +87,6 @@ h2 {
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.08em;
-}
-
-.admin-image {
-  width: 40px;
-  height: 40px;
-  border-radius: 16px;
-  background-color: #fefefe;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .welcome-card {
@@ -242,10 +174,6 @@ h2 {
 }
 
 @media (max-width: 700px) {
-  .admin-header {
-    align-items: flex-start;
-  }
-
   .feature-grid {
     grid-template-columns: 1fr;
   }
